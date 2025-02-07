@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生重开模拟器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>人生重开模拟器</h1>
+        <div class="result" id="result">
+            点击下方按钮开始重开人生！
+        </div>
+        <button class="button" onclick="remake()">重开</button>
+    </div>
+
+    <div class="footer">
+        ©wxz
+    </div>
+
+    <script>
+        const locations = [
+            "日本的市区", "美国的乡村", "法国的市区", "中国的首都", "巴西的里约热内卢",
+            "印度的县城", "悉尼", "俄罗斯与乌克兰交汇处", "埃及", "南极洲",
+            "英国的首都", "加拿大的县城", "德国的首都", "意大利的县城", "西班牙的首都",
+            "澳大利亚的县城", "南非的首都", "阿根廷的县城", "墨西哥的首都", "泰国的县城",
+            "韩国的首都", "新加坡的县城", "新西兰的首都", "马来西亚的县城", "越南的首都",
+            "菲律宾的县城", "印尼的首都", "沙特阿拉伯的县城", "伊朗的首都", "土耳其的县城"
+        ];
+
+        const species = [
+            "狗狗", "猫咪", "熊猫", "企鹅", "海豚", "老鹰", "狮子", "大象", "兔子", "人类"
+        ];
+
+        const genders = ["男孩子", "女孩子", "小楠娘", "xyn", "扶她"];
+
+        const traits = [
+            "自救大师", "正面对刀必胜", "擅长CPVP", "UHC大师", "能完美jumpreset",
+            "刀刀暴击", "原地起飞", "化身金明辉", "bw必胜", "十连十金"
+        ];
+
+        function remake() {
+            const location = locations[Math.floor(Math.random() * locations.length)];
+            const speciesChosen = species[Math.floor(Math.random() * species.length)];
+            let gender = null;
+            let trait = null;
+
+            if (speciesChosen === "人类") {
+                gender = genders[Math.floor(Math.random() * genders.length)];
+                if (Math.random() < 0.2) {
+                    trait = traits[Math.floor(Math.random() * traits.length)];
+                }
+            }
+
+            let output = `重开成功！你出生在【${location}】`;
+            if (speciesChosen === "人类") {
+                output += `，是【${gender}】。`;
+                if (trait) {
+                    output += `<br>你拥有特殊属性：【${trait}】！`;
+                } else {
+                    output += `<br>你没有特殊属性。`;
+                }
+            } else {
+                output += `，是【${speciesChosen}】。`;
+            }
+
+            document.getElementById("result").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
